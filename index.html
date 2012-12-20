@@ -16,7 +16,7 @@ layout: default
 <section class="links">
     <h3>Links</h3>
     <ul>
-        {% json_to_array links.json, links %}
+        {% yaml_to_array links.yaml, links %}
         {% for link in links %}
             <li><a href="{{ link.url }}">{{ link.title }}</a></li>
         {% endfor %}
