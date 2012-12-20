@@ -1,11 +1,11 @@
 body {
     width: 800px;
-    margin: 80px auto;
+    margin: 2em auto;
     font-family: 'Vollkorn', Georgia, Times, serif;
 }
 
 header {
-    margin: 0 0 2em 0;
+    margin: 0 0 4em 0;
 }
 
 header h1 {
@@ -40,13 +40,22 @@ a:hover {
     border-bottom: 1px solid #ddd;
 }
 
+.posts {
+    margin-bottom: 4em;
+}
+
 .posts ul, .links ul {
     list-style: none;
 }
 
 .posts ul li, .links ul li {
     margin: 1em 0 0 0;
+}
 
+.date {
+    margin-left: 1em;
+    color: #aaa;
+}
 
 p {
     font-size: 16px;
