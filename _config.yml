@@ -1,3 +1,4 @@
 auto: true
 server: true
 pygments: true
+exclude: _outlines
