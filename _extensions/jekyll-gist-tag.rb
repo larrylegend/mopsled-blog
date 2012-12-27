@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'json'
+require 'pygments'
  
 module Jekyll
   class RenderGist< Liquid::Tag
