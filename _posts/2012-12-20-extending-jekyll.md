@@ -25,22 +25,8 @@ Given a basic [jekyll folder configuration](https://github.com/mojombo/jekyll/wi
 
 ### Custom Liquid Tags
 Here's a bare-bones Liquid tag extension:
-{% highlight ruby %}
-module Jekyll
-  class MyCustomTag < Liquid::Tag
-    def initialize(tag_name, params, tokens)
-      super
-      @params = params.strip
-    end
 
-    def render(context)
-      "Received params: '#{@params}'!"
-    end
-  end
-end
-
-Liquid::Template.register_tag('my_custom_tag', Jekyll::MyCustomTag)
-{% endhighlight %}
+{% render_gist https://gist.github.com/4378238 %}
 
 In your template:
 {% highlight html %}
@@ -56,33 +42,7 @@ This would produce:
 
 ### Liquid Tag Example
 
-{% highlight ruby %}
-# Note: You can use any normal ruby library in your extenstion
-require 'yaml'
-
-module Jekyll
-  class YAMLToArray < Liquid::Tag
-    def initialize(tag_name, params, tokens)
-      super
-      @file, @variable = params.split(',', 2).map{ |x| x.strip }
-    end
-
-    def render(context)
-      includes_dir = File.join(context.registers[:site].source, '_includes')
-      yaml_file = File.join(includes_dir, @file)
-
-      if File.file? yaml_file
-        context.environments.first[@variable] = YAML.load_file(yaml_file)
-        return
-      else
-        "Included file '#{@file}' not found in _includes directory"
-      end
-    end
-  end
-end
-
-Liquid::Template.register_tag('yaml_to_array', Jekyll::YAMLToArray)
-{% endhighlight %}
+{% render_gist https://gist.github.com/4386193 %}
 
 This tag is invoked like this:
 {% highlight html %}
@@ -115,15 +75,8 @@ After the tag is invoked, the `links_array` variable can been used in a `for` lo
 
 ### Custom Liquid Filters
 Here's a basic Liquid filter implementation:
-{% highlight ruby %}
-module Jekyll
-  module Filters
-    def my_filter(input)
-      "Filtered input: '#{input.upcase}'"
-    end
-  end
-end
-{% endhighlight %}
+
+{% render_gist https://gist.github.com/4386225 %}
 
 In your template:
 {% highlight html %}
@@ -141,36 +94,7 @@ This would produce:
 
 I use a custom filter on this website to generate relative dates, such as "3 weeks ago" rather than an exact date such as "25 December 2012":
 
-{% highlight ruby %}
-module Jekyll
-  module Filters
-    def relative_date(date)
-      # Note: You can use ruby code outside of the module (see below)
-      relative_date_in_words(date)
-    end
-  end
-end
-
-# Adopted from a function found on stack overflow:
-# http://stackoverflow.com/a/195894/770938
-def relative_date_in_words(date)
-  a = (Time.now - date).to_i
-
-  case a
-    when 0 then 'just now'
-    when 1 then 'a second ago'
-    when 2..59 then a.to_s+' seconds ago' 
-    when 60..119 then 'a minute ago' #120 = 2 minutes
-    when 120..3540 then (a/60).to_i.to_s+' minutes ago'
-    when 3541..7100 then 'an hour ago' # 3600 = 1 hour
-    when 7101..82800 then ((a+99)/3600).to_i.to_s+' hours ago' 
-    when 82801..172000 then 'a day ago' # 86400 = 1 day
-    when 172001..518400 then ((a+800)/(60*60*24)).to_i.to_s+' days ago'
-    when 518400..1036800 then 'a week ago'
-    else ((a+180000)/(60*60*24*7)).to_i.to_s+' weeks ago'
-  end
-end
-{% endhighlight %}
+{% render_gist https://gist.github.com/4386236 %}
 
 For example, the date of this post could be expressed using a jekyll filter: 
 {% raw %}
