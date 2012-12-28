@@ -11,26 +11,30 @@ module Jekyll
       url, @language = url.split(' ')
 
       if %r|gist.github.com/([^/]+)/?$| =~ url
-        gist_id = $1
+        @gist_id = $1
       else
         $stderr.puts "Failed to parse gist URL '#{url}' from tag."
         $stderr.puts "URL should be in the form 'https://gist.github.com/123456'"
         exit(1);
       end
 
-      @gist = get_gist_data(gist_id)
+      @gist = get_gist_data(@gist_id)
     end
     
     def render(context)
-      output = ''
+      if @gist.nil?
+        gist_script_tag(@gist_id)
+      else
+        output = ''
 
-      if context.registers[:site].pygments
-        for name, file in @gist['files']
-          output += render_pygments(context, file)
+        if context.registers[:site].pygments
+          for name, file in @gist['files']
+            output += render_pygments(context, file)
+          end
         end
-      end
 
-      output = add_script_tags(output)
+        output = add_script_tags(output)
+      end
     end
 
     def render_pygments(context, file)
@@ -44,11 +48,15 @@ module Jekyll
 
     def add_code_tags(code, language)
       code = code.sub(/<pre>/,'<pre><code class="' + language + '">')
-      code = code.sub(/<\/pre>/,"</code></pre><p><a href=\"https://gist.github.com/#{@gist['id']}\">This Gist</a> hosted on <a href=\"http://github.com/\">GitHub</a>.</p>")
+      code = code.sub(/<\/pre>/,"</code></pre><p><a href=\"https://gist.github.com/#{@gist_id}\">This Gist</a> hosted on <a href=\"http://github.com/\">GitHub</a>.</p>")
     end
 
     def add_script_tags(code)
-      "<div class=\"gist\"><script src=\"https://gist.github.com/#{@gist['id']}.js\"> </script><noscript>#{code}</noscript></div>"
+      "<div class=\"gist\">#{gist_script_tag(@gist_id)}<noscript>#{code}</noscript></div>"
+    end
+
+    def gist_script_tag(gist_id)
+      "<script src=\"https://gist.github.com/#{gist_id}.js\"> </script>"
     end
 
     def get_gist_data(gist_id)
@@ -57,7 +65,7 @@ module Jekyll
         JSON.parse(json)
       rescue => error
         $stderr.puts "Unable to open gist URL: #{error}"
-        exit(1);
+        $stderr.puts "\tNote: gist \##{gist_id} will not have generated <noscript> source"
       end
     end
 
