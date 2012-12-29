@@ -29,6 +29,7 @@ h2 {
     padding-bottom: 6px;
     border-bottom: 1px solid #bbb;
     font-size: 2em;
+    margin-bottom: 0;
 }
 
 h3 {
@@ -38,6 +39,11 @@ h3 {
 
 header a:hover {
     color: black;
+}
+
+.post-date {
+    color: #aaa;
+    float: right;
 }
 
 a {
@@ -68,7 +74,7 @@ a:hover {
     margin: 1em 0 0 0;
 }
 
-.date {
+.index-date {
     margin-left: 1em;
     color: #aaa;
 }
