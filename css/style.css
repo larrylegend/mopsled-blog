@@ -95,3 +95,7 @@ pre {
     border: 1px solid #ddd;
     border-radius: 3px;
 }
+
+li {
+    margin-bottom: 1.5em;
+}
