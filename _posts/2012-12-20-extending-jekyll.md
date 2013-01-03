@@ -26,7 +26,7 @@ Given a basic [jekyll folder configuration](https://github.com/mojombo/jekyll/wi
 ### Custom Liquid Tags
 Here's a bare-bones Liquid tag extension:
 
-{% render_gist https://gist.github.com/4378238 %}
+{% render_gist https://gist.github.com/raw/4378238/a151c4a451ec79d59f243691ce8e3eef6d43e709/tag-bare.rb %}
 
 In your template:
 {% highlight html %}
@@ -42,7 +42,7 @@ This would produce:
 
 ### Liquid Tag Example
 
-{% render_gist https://gist.github.com/4386193 %}
+{% render_gist https://gist.github.com/raw/4386193/3127f1bd3e4068d5ba0ce2907334a3308dec20bb/tag-example.rb %}
 
 This tag is invoked like this:
 {% highlight html %}
@@ -76,7 +76,7 @@ After the tag is invoked, the `links_array` variable can been used in a `for` lo
 ### Custom Liquid Filters
 Here's a basic Liquid filter implementation:
 
-{% render_gist https://gist.github.com/4386225 %}
+{% render_gist https://gist.github.com/raw/4386225/b18a9571b62e5c0fd727a0e30b8e17aadaef3de4/filter-bare.rb %}
 
 In your template:
 {% highlight html %}
@@ -94,7 +94,7 @@ This would produce:
 
 I use a custom filter on this website to generate relative dates, such as "3 weeks ago" rather than an exact date such as "25 December 2012":
 
-{% render_gist https://gist.github.com/4386236 %}
+{% render_gist https://gist.github.com/raw/4386236/79b3f360b17a00e79ec79e655a8fd5d19041b525/filter-example.rb %}
 
 For example, the date of this post could be expressed using a jekyll filter: 
 {% raw %}
