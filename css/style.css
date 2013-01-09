@@ -99,3 +99,7 @@ pre {
 ol li {
     margin-bottom: 1.5em;
 }
+
+code { 
+    word-wrap: break-word;
+}
