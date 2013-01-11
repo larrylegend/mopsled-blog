@@ -33,6 +33,7 @@ git push -u origin gh-pages
 {% highlight bash %}
 git checkout master
 {% endhighlight %}
+    </li>
     <li>Link to your images in your markdown file
 {% highlight bash %}
 # In your README.md file in your master branch:
