@@ -15,7 +15,7 @@ Github's pages service provides a lot of useful resources for hosting a website 
 {% highlight bash %}
 cd repo-name
 git checkout --orphan gh-pages
-git rm-rf .
+git rm -rf .
 rm -r .
 {% endhighlight %}
     </li>
@@ -29,6 +29,10 @@ git commit -m "Added static images/ folder"
 git push -u origin gh-pages
 {% endhighlight %}
     </li>
+    <li>Switch back to your <code>master</code> repository
+{% highlight bash %}
+git checkout master
+{% endhighlight %}
     <li>Link to your images in your markdown file
 {% highlight bash %}
 # In your README.md file in your master branch:
