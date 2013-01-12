@@ -94,6 +94,7 @@ pre {
     padding: 2px 4px;
     border: 1px solid #ddd;
     border-radius: 3px;
+    word-wrap: break-word;
 }
 
 ol li {
