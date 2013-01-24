@@ -60,4 +60,4 @@ chgrp -R brewers `brew --prefix`
 # Note: if you're not in the admin group, this command may require sudo.
 {% endhighlight %}
 
-And you're all set! Now any member of the group `brewers` has access to `brew install` at their whim. To add or remove users from the `brewers` group, just go back to the group in the **Users & Groups** section of **System Preferences** and change the group's membership options there.
+And you're all set! Now any member of the group `brewers` has access to `brew install` at their whim. To add or remove users from the `brewers` group, just go back to the group in the **Users & Groups** section of **System Preferences** and change the users's membership options there.
