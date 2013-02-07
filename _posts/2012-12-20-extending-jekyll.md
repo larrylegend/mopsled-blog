@@ -7,7 +7,7 @@ title: Extending Jekyll
 
 Jekyll is a static website generator, meaning that it operates very differently from dynamic content management systems like WordPress. Posts are written in a markup language, such as Markdown or Textile or HTML, and simply saved as individual files in a designated directory. When activated, the `jekyll` gem will convert these individual files into basic HTML and output the entire website into a folder. Because the generated website is just in HTML, the files can be hosted virtually anywhere and don't suffer any security problems than dynamic languages can create. 
 
-One of many static website generators, jekyll embraces simplicity and ease of use, sacrificing some functionality that dynamic blog software can provide. Although jekyll itself cannot provide dynamic features like users and commening, it can make use of external services such as [DISQUS](http://disqus.com/) to provide thrid-party hosted comments.
+One of many static website generators, jekyll embraces simplicity and ease of use, sacrificing some functionality that dynamic blog software can provide. Although jekyll itself cannot provide dynamic features like users and commenting, it can make use of external services such as [DISQUS](http://disqus.com/) to provide thrid-party hosted comments.
 
 ### Jekyll Extensions
 Jekyll uses [Liquid](http://www.liquidmarkup.org/) to generate web pages based off of simple templates. Liquid provides [some useful tags](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers) to generate and manipulate content within a post, and jekyll adds [some functionality](https://github.com/mojombo/jekyll/wiki/Liquid-Extensions) to Liquid as well. 
