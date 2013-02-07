@@ -6,7 +6,7 @@ layout: default
     <ul>
         {% for post in site.posts %}
         <li>
-            <a href="{{ post.url }}">{{ post.title }}</a><br/>
+            <a href="{{ post.url }}/">{{ post.title }}</a><br/>
             <div class="index-date">{{ post.date | relative_date }}</div>
         </li>
         {% endfor %}
